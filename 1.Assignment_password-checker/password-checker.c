@@ -1,51 +1,83 @@
 #include <stdio.h>
 #include <string.h>
-#include <stdbool.h>
 #include <ctype.h>
 
+       
 
-int main () {
-    char user_input[15];
-    bool has_more_than_8_char = false;
-    bool has_upper_case = false;
-    bool has_lower_case = false;
-    bool has_numbers = false;
-    bool has_symbols = false;
-    
+void checkPassword(const char *password)
+{
+    // int max_length = 100;
+    int min_length = 8;
 
-    printf("Enter Your Password: ");
-    fgets(user_input, sizeof(user_input), stdin);
+    int len = (int)strlen(password);
+    int has_lower = 0;
+    int has_upper = 0;
+    int has_digit = 0;
+    int has_symbol = 0;
+    int score = 0;
 
-    for (int i = 0; user_input[i] != '\0'; i++){
-        unsigned char character = (unsigned char)user_input[i];
+    for (int i = 0; i < len; i++)
+    {
+        unsigned char c = (unsigned char)password[i];
 
-        if(strlen(user_input) >= 8){
-            has_more_than_8_char = true;
-        }
-
-        if(isupper(character)){
-            has_upper_case = true;
-        }
-        
-        if(islower(character)){
-            has_lower_case = true;
-        }
-        
-        if(isdigit(character)){
-            has_numbers = true;
-        }
-        
-        if(ispunct(character)){
-            has_symbols = true;
-        }
-    }
-    
-    if(has_lower_case && has_more_than_8_char && has_numbers && has_symbols && has_upper_case){
-        printf("Youe Password is strong !\n");
-    }
-    else{
-        printf("Your Password Doesn't meat the application password Plicy.\n");
+        if (islower(c))
+            has_lower = 1;
+        else if (isupper(c))
+            has_upper = 1;
+        else if (isdigit(c))
+            has_digit = 1;
+        else if (!isdigit(c) && !isalpha(c)) 
+            has_symbol = 1;
     }
 
+    if (len >= min_length) score++;
+    if (len >= 12) score++;   
+    if (has_lower) score++;   
+    if (has_upper) score++;   
+    if (has_digit) score++;   
+    if (has_symbol) score++;   
+
+    printf("\n========= Password Strength Report =========\n");
+    printf("Password length             : %d characters\n", len);
+    printf("Contains lowercase letters  : %s\n", has_lower  ? "Yes" : "No");
+    printf("Contains uppercase letters  : %s\n", has_upper  ? "Yes" : "No");
+    printf("Contains digits             : %s\n", has_digit  ? "Yes" : "No");
+    printf("Contains special symbols    : %s\n", has_symbol ? "Yes" : "No");
+    printf("Total score                 : %d / 6\n", score);
+    printf("--------------------------------------------\n");
+
+    if (len < min_length)
+    {
+        printf("Result: WEAK (length is less than %d characters)\n", min_length);
+    }
+    else if (score <= 2)
+    {
+        printf("Result: WEAK - increase character variety\n");
+    }
+    else if (score <= 4)
+    {
+        printf("Result: ACCEPTABLE - can be improved\n");
+    }
+    else
+    {
+        printf("Result: STRONG - excellent password\n");
+    }
+    printf("============================================\n");
+}
+
+int main(void)
+{
+    int max_length = 100;
+    char buffer[max_length];
+
+    printf("Enter the password to check: ");
+
+    if (scanf("%99s", buffer) != 1)
+    {
+        printf("Error reading input.\n");
+        return 1;
+    }
+
+    checkPassword(buffer);
     return 0;
 }

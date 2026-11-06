@@ -11,8 +11,8 @@
 
 #### 2. Framework and Library Research:
 
->[!Tip] Tip
->**`I used Obsidian to create this PDF`**
+> [!TIP]
+> **`I used Obsidian to create this PDF`**.
 
 [Framework and Library](https://github.com/OmarBjjash/Sec_bootcamp/blob/main/2.Assignment_framework_and_library/2.framework_and_library.pdf)
 

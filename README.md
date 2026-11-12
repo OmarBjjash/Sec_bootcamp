@@ -57,3 +57,27 @@
 #### 9. Pyhton File Integrity Monitor (FIM)
 
 [FIM](https://github.com/OmarBjjash/Sec_bootcamp/tree/main/9.file_integrity_monitor)
+
+---
+
+#### 10. Request process tool
+
+[Request process tool](https://github.com/OmarBjjash/Sec_bootcamp/tree/main/10.Request_process)
+
+---
+
+#### 11. SQL Injection protect tool
+
+[SQLi protect](https://github.com/OmarBjjash/Sec_bootcamp/tree/main/11.sqli_protect)
+
+---
+
+#### 12. Secure file upload
+
+[SFU](https://github.com/OmarBjjash/Sec_bootcamp/tree/main/12.secure_file_upload)
+
+---
+
+#### 13. Request process tool
+
+[FIM](https://github.com/OmarBjjash/Sec_bootcamp/tree/main/13.session_and_cookie_sec)
